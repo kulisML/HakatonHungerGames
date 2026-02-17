@@ -1,0 +1,20 @@
+{
+  "name": "agent-world",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,green \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "npm --workspace apps/server run dev",
+    "dev:web": "npm --workspace apps/web run dev",
+    "build": "npm --workspace apps/server run build && npm --workspace apps/web run build",
+    "start": "npm --workspace apps/server run start",
+    "smoke": "npm --workspace apps/server run smoke",
+    "load": "npm --workspace apps/server run load",
+    "lint": "npm --workspace apps/server run lint && npm --workspace apps/web run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
